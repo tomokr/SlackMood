@@ -52,7 +52,11 @@ class PlayerListeningService: NSObject {
 
     private func interesting(userInfo: [NSObject : AnyObject]) -> Bool {
         if let state = userInfo["Player State"] as? String! {
+            if userInfo["Name"] as? String == "Store に接続中" {
+                    return false
+            }
             return state == "Playing"
+
         }
         return false
     }
